@@ -8,6 +8,15 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
+from src.auth import init_auth, login_form, logout_button
+
+init_auth()
+
+if not st.session_state.logged_in:
+    login_form()
+    st.stop()
+
+logout_button()
 
 @st.cache_data
 def load_sample_data():
